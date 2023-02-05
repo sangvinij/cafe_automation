@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "cafe-automation"
+version = "0.1.0"
+description = ""
+authors = ["Artyom_Vorozhbyanov <artyom.vorozhbyanov@gmail.com>"]
+readme = "README.md"
+packages = [{include = "cafe_automation"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+kivy = {extras = ["full"], version = "^2.1.0"}
+kivy-examples = "^2.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
