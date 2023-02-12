@@ -342,6 +342,25 @@ files = [
 requests = "*"
 
 [[package]]
+name = "kivymd"
+version = "1.1.1"
+description = "Set of widgets for Kivy inspired by Google's Material Design"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "kivymd-1.1.1.tar.gz", hash = "sha256:931a0435c2a079c6dca755c50d0023b5e1c907f7b4ac8bb9e2834daa3cefe906"},
+]
+
+[package.dependencies]
+kivy = ">=2.0.0"
+pillow = "*"
+
+[package.extras]
+dev = ["black", "coveralls", "flake8", "isort[pyproject]", "pre-commit", "pyinstaller[hook-testing]", "pytest", "pytest-cov", "pytest-timeout", "pytest_asyncio"]
+docs = ["furo", "sphinx", "sphinx-autoapi (==1.4.0)", "sphinx-copybutton", "sphinx-notfound-page", "sphinx-tabs"]
+
+[[package]]
 name = "pillow"
 version = "9.4.0"
 description = "Python Imaging Library (Fork)"
@@ -528,4 +547,4 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "4c356d471a041a457f6e2cfba0348b600a92eb1fe06d524e0c65fc4fc2e956f8"
+content-hash = "884533c79436ab9b30bcf470375ad7da86232fa49abbfe6e91fc21a1a3bb8ae5"
