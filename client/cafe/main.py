@@ -3,7 +3,6 @@ import webbrowser
 from kivy.lang import Builder
 
 from kivymd.app import MDApp
-from kivymd.uix.label import MDLabel
 from kivymd.uix.tab import MDTabsBase
 from kivymd.uix.floatlayout import MDFloatLayout
 

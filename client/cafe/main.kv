@@ -18,7 +18,7 @@
     selected_color: "#4a4939"
     _no_ripple_effect: True
 
-    
+
 
 MDScreen:
 
@@ -38,7 +38,7 @@ MDScreen:
 
                 MDTabs:
                     id: tabs
-                    on_tab_switch: app.on_tab_switch(*args) 
+                    on_tab_switch: app.on_tab_switch(*args)
                     height: '48dp'
                     tab_indicator_anim: False
                     tab_hint_x: 2
@@ -49,7 +49,7 @@ MDScreen:
                         name: 'tab1'
                         title: f"[size=18][font={fonts[-1]['fn_regular']}][/size][/font] Все"
 
-                        MDScrollView: 
+                        MDScrollView:
                             MDBoxLayout:
                                 orientation: 'vertical'
                                 padding: 12
@@ -66,21 +66,21 @@ MDScreen:
                                         font_style: 'H6'
                                         padding_bottom: '10dp'
                                         halign: 'left'
-                                    
+
                                     MDTextButton:
                                         text: 'Ещё'
                                         size_hint_y: .25
                                         font_size: 20
                                         padding_bottom: '10dp'
                                         halign: 'right'
-                                    
+
                                 MDGridLayout:
-                                
+
                                     cols: 2
                                     size_hint_y: 2
                                     padding: 10
                                     MDCard:
-                                        
+
                                         MDBoxLayout:
                                             orientation: 'vertical'
                                             padding: '5dp'
@@ -103,7 +103,7 @@ MDScreen:
                                                 text_color: 'white'
 
                                     MDCard:
-                                        
+
                                         MDBoxLayout:
                                             orientation: 'vertical'
                                             padding: '5dp'
@@ -143,12 +143,12 @@ MDScreen:
 
 
                                 MDGridLayout:
-                                
+
                                     cols: 2
                                     size_hint_y: 2
                                     padding: 10
                                     MDCard:
-                                        
+
                                         MDBoxLayout:
                                             orientation: 'vertical'
                                             padding: '5dp'
@@ -168,9 +168,9 @@ MDScreen:
                                                 text: "В корзину"
                                                 md_bg_color: "red"
                                                 text_color: 'white'
-    
+
                                     MDCard:
-                                        
+
                                         MDBoxLayout:
                                             orientation: 'vertical'
                                             padding: '5dp'
@@ -190,7 +190,7 @@ MDScreen:
                                                 text: "В корзину"
                                                 md_bg_color: "red"
                                                 text_color: 'white'
-                                
+
                                 MDBoxLayout:
                                     orientation: 'horizontal'
                                     padding: 12
@@ -210,12 +210,12 @@ MDScreen:
 
 
                                 MDGridLayout:
-                                
+
                                     cols: 2
                                     size_hint_y: 2
                                     padding: 10
                                     MDCard:
-                                        
+
                                         MDBoxLayout:
                                             orientation: 'vertical'
                                             padding: '5dp'
@@ -237,7 +237,7 @@ MDScreen:
                                                 text_color: 'white'
 
                                     MDCard:
-                                        
+
                                         MDBoxLayout:
                                             orientation: 'vertical'
                                             padding: '5dp'
@@ -269,8 +269,8 @@ MDScreen:
                                         size_hint_y: .25
                                         font_size: 20
                                         font_style: 'H6'
-                                        halign: 'left'  
-                                    
+                                        halign: 'left'
+
                                     MDTextButton:
                                         text: 'Ещё'
                                         size_hint_y: .25
@@ -279,12 +279,12 @@ MDScreen:
                                         halign: 'right'
 
                                 MDGridLayout:
-                                
+
                                     cols: 2
                                     size_hint_y: 2
                                     padding: 10
                                     MDCard:
-                                        
+
                                         MDBoxLayout:
                                             orientation: 'vertical'
                                             padding: '5dp'
@@ -307,7 +307,7 @@ MDScreen:
                                                 text_color: 'white'
 
                                     MDCard:
-                                        
+
                                         MDBoxLayout:
                                             orientation: 'vertical'
                                             padding: '5dp'
@@ -328,7 +328,7 @@ MDScreen:
                                                 text: "В корзину"
                                                 md_bg_color: "red"
                                                 text_color: 'white'
-                                
+
                     Tab:
                         id: tab2
                         name: 'tab1'
@@ -337,22 +337,22 @@ MDScreen:
                     Tab:
                         id: tab3
                         name: 'tab1'
-                        title: f"[size=18][font={fonts[-1]['fn_regular']}][/size][/font] Картофель"   
+                        title: f"[size=18][font={fonts[-1]['fn_regular']}][/size][/font] Картофель"
 
                     Tab:
                         id: tab4
                         name: 'tab1'
-                        title: f"[size=18][font={fonts[-1]['fn_regular']}][/size][/font] Десерты"   
-                    
+                        title: f"[size=18][font={fonts[-1]['fn_regular']}][/size][/font] Десерты"
+
                     Tab:
                         id: tab5
                         name: 'tab5'
-                        title: f"[size=18][font={fonts[-1]['fn_regular']}][/size][/font] Холодные напитки" 
-                    
+                        title: f"[size=18][font={fonts[-1]['fn_regular']}][/size][/font] Холодные напитки"
+
                     Tab:
                         id: tab6
                         name: 'tab5'
-                        title: f"[size=18][font={fonts[-1]['fn_regular']}][/size][/font] Горячие напитки" 
+                        title: f"[size=18][font={fonts[-1]['fn_regular']}][/size][/font] Горячие напитки"
 
 
         MDBottomNavigationItem:
@@ -381,7 +381,7 @@ MDScreen:
             MDLabel:
                 text: 'Корзина'
                 halign: 'center'
-                
+
     MDNavigationLayout:
 
         MDScreenManager:
@@ -395,7 +395,7 @@ MDScreen:
                     md_bg_color: "#e7e4c0"
                     specific_text_color: "white"
                     left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
-        
+
 
         MDNavigationDrawer:
             id: nav_drawer
@@ -419,7 +419,7 @@ MDScreen:
                 DrawerClickableItem:
                     icon: "map-search"
                     text: "Адреса"
-                
+
                 DrawerClickableItem:
                     icon: "information-outline"
                     text: "О нас"

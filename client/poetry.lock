@@ -123,35 +123,6 @@ files = [
 ]
 
 [[package]]
-name = "ffpyplayer"
-version = "4.3.5"
-description = "A cython implementation of an ffmpeg based player."
-category = "main"
-optional = false
-python-versions = "*"
-files = [
-    {file = "ffpyplayer-4.3.5-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:5227ade460772c61a6e8772b2f118b28b20e7e2271ef169d86a779e07fe1aab6"},
-    {file = "ffpyplayer-4.3.5-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:e8477eb12fd7a8f4b61237e445d1840750a4c3d9f0732f099a7929f4143371d3"},
-    {file = "ffpyplayer-4.3.5-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:f8348e468e20df21f28b0d841d58457de6943ad99048454121fa66fc2fc71672"},
-    {file = "ffpyplayer-4.3.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:db49e4012e87613092a04c79f8b3d0ffed59e935ae75df3b6b54ea4f50fb2cf6"},
-    {file = "ffpyplayer-4.3.5-cp310-cp310-win_amd64.whl", hash = "sha256:a423652a08909b61d9158f07961d6bee5c4cec5759c306ed1c2227cb743fc851"},
-    {file = "ffpyplayer-4.3.5-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:92246322b48697b7f26c86e5fbb0ce97e7dce4bb9eafbd3ba5348c18dfc0b7e3"},
-    {file = "ffpyplayer-4.3.5-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:efa28c0905556cd6d4fdac78c99664c4ce47d20a1b225d70e1a8cfee07897695"},
-    {file = "ffpyplayer-4.3.5-cp37-cp37m-win_amd64.whl", hash = "sha256:034ea7a08b76cc5fcfc6dee52cc3bd26843efd63b13d312c80396a9be0e2620f"},
-    {file = "ffpyplayer-4.3.5-cp38-cp38-macosx_10_9_universal2.whl", hash = "sha256:599b2aa14e5c57fac8a51a918e010a758ffcd58261abc981153e1f63082e69ca"},
-    {file = "ffpyplayer-4.3.5-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:091fe97a5b82db0596780069ba273b53ece5971a43b8ae71956e671681bad90d"},
-    {file = "ffpyplayer-4.3.5-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:207c00dce7c299e654b696a35bc8304efc52d72f1bd0de11beccbbac6a8a01f1"},
-    {file = "ffpyplayer-4.3.5-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:63c2da0639be85b91f6b0ca2a5f95a5035db231c0b94901000b6e234487f534a"},
-    {file = "ffpyplayer-4.3.5-cp38-cp38-win_amd64.whl", hash = "sha256:a57bb1dd3eee3ae7915b186a71b7448f3adce24d1a486017eed5ab60c7d72821"},
-    {file = "ffpyplayer-4.3.5-cp39-cp39-macosx_10_9_universal2.whl", hash = "sha256:24639be303e92863a3d986a5c7d114602a33bdab48391aa6a4e09a8b08a54db6"},
-    {file = "ffpyplayer-4.3.5-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:fc35177f14d88d6f6b523e2ac38a5da81c5529f2d3a3de4b2ed285e390da6bbf"},
-    {file = "ffpyplayer-4.3.5-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:57c46d8e932868e2f97591be0f141803beafc524dee4218fd18488e0f1f9b7d4"},
-    {file = "ffpyplayer-4.3.5-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:fd1f008c7fb1f7ad4886bdd4f89b301494e8202f4cdb0e47a94b0246f0e0e9d7"},
-    {file = "ffpyplayer-4.3.5-cp39-cp39-win_amd64.whl", hash = "sha256:f6e51bdc63ec251cd46d57282f77d8c5599f5359165b6e8d68d06237a7d1e806"},
-    {file = "ffpyplayer-4.3.5.tar.gz", hash = "sha256:be6b092e31446830fb1073955d0420a6510952d068da70e6163ad74420f0e434"},
-]
-
-[[package]]
 name = "idna"
 version = "3.4"
 description = "Internationalized Domain Names in Applications (IDNA)"
@@ -196,13 +167,10 @@ files = [
 
 [package.dependencies]
 docutils = "*"
-ffpyplayer = {version = "*", optional = true, markers = "(sys_platform == \"linux\" or sys_platform == \"darwin\") and extra == \"full\""}
 "kivy-deps.angle" = {version = ">=0.3.2,<0.4.0", markers = "sys_platform == \"win32\""}
 "kivy-deps.glew" = {version = ">=0.3.1,<0.4.0", markers = "sys_platform == \"win32\""}
-"kivy-deps.gstreamer" = {version = ">=0.3.3,<0.4.0", optional = true, markers = "sys_platform == \"win32\" and extra == \"full\""}
 "kivy-deps.sdl2" = {version = ">=0.4.5,<0.5.0", markers = "sys_platform == \"win32\""}
 Kivy-Garden = ">=0.1.4"
-pillow = {version = "*", optional = true, markers = "extra == \"full\""}
 pygments = "*"
 pypiwin32 = {version = "*", markers = "sys_platform == \"win32\""}
 
@@ -258,26 +226,6 @@ files = [
 ]
 
 [[package]]
-name = "kivy-deps-gstreamer"
-version = "0.3.3"
-description = "Repackaged binary dependency of Kivy."
-category = "main"
-optional = false
-python-versions = "*"
-files = [
-    {file = "kivy_deps.gstreamer-0.3.3-cp310-cp310-win32.whl", hash = "sha256:c52a2bf7a957b443dd80a85e581124c782f2cc1709d8929a163283746bf1b6b1"},
-    {file = "kivy_deps.gstreamer-0.3.3-cp310-cp310-win_amd64.whl", hash = "sha256:f6a41fa7879d99eb5ef21d4524e47ed46e8a59277b53b80d5f3d641472f571fa"},
-    {file = "kivy_deps.gstreamer-0.3.3-cp311-cp311-win32.whl", hash = "sha256:a50597cf6438dceefa88f42287582dc93707e4783e8806593cc9e2ccef32cbac"},
-    {file = "kivy_deps.gstreamer-0.3.3-cp311-cp311-win_amd64.whl", hash = "sha256:2c584c363cdd2cc2bffa22faccbbfccda49fb545d9f7e033dbe6725486bba354"},
-    {file = "kivy_deps.gstreamer-0.3.3-cp37-cp37m-win32.whl", hash = "sha256:5c0c45a24715784a183e498a0c184aec570c459dcc9c958d234900b97d67e9d6"},
-    {file = "kivy_deps.gstreamer-0.3.3-cp37-cp37m-win_amd64.whl", hash = "sha256:068b447ee0ec8a859fecb479d4bb264116d2fd413c082011568c9db489294dee"},
-    {file = "kivy_deps.gstreamer-0.3.3-cp38-cp38-win32.whl", hash = "sha256:94804386698d897a9891bc3832e2af2fbe9bc17bd3d9cab0636d1f95c7d6cbc5"},
-    {file = "kivy_deps.gstreamer-0.3.3-cp38-cp38-win_amd64.whl", hash = "sha256:ee0abd1305284e2dab93c9d23d4c0e7c8e9e69049a32a69add82d9fd685f3ac3"},
-    {file = "kivy_deps.gstreamer-0.3.3-cp39-cp39-win32.whl", hash = "sha256:b2969483da7132716410331ca3d9df366b2d2ecc10283a20aac4d36f8cfb4a2b"},
-    {file = "kivy_deps.gstreamer-0.3.3-cp39-cp39-win_amd64.whl", hash = "sha256:b157bb7c1634abd140318dcca9e043d2bf7d6a07445847d8e6a489ffb30b737c"},
-]
-
-[[package]]
 name = "kivy-deps-sdl2"
 version = "0.4.5"
 description = "Repackaged binary dependency of Kivy."
@@ -294,37 +242,6 @@ files = [
     {file = "kivy_deps.sdl2-0.4.5-cp39-cp39-win32.whl", hash = "sha256:0126c141dad69147315c43144c1e5356982860bed49ced1ad186616ae33b761a"},
     {file = "kivy_deps.sdl2-0.4.5-cp39-cp39-win_amd64.whl", hash = "sha256:8a54e000813471ae141ed4304eb34ee90b27c06f95565507e11e138f693c3885"},
 ]
-
-[[package]]
-name = "kivy-examples"
-version = "2.1.0"
-description = "Kivy examples."
-category = "main"
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "Kivy_examples-2.1.0-py2.py3-none-any.whl", hash = "sha256:b8000252811b87d4528abbffdc236e456a1ab36d9c9c9c13686a560d2f3158c1"},
-]
-
-[package.dependencies]
-docutils = "*"
-"kivy-deps.angle" = {version = ">=0.3.2,<0.4.0", markers = "sys_platform == \"win32\""}
-"kivy-deps.glew" = {version = ">=0.3.1,<0.4.0", markers = "sys_platform == \"win32\""}
-"kivy-deps.sdl2" = {version = ">=0.4.5,<0.5.0", markers = "sys_platform == \"win32\""}
-Kivy-Garden = ">=0.1.4"
-pygments = "*"
-pypiwin32 = {version = "*", markers = "sys_platform == \"win32\""}
-
-[package.extras]
-angle = ["kivy-deps.angle (>=0.3.2,<0.4.0)"]
-base = ["docutils", "kivy-deps.angle (>=0.3.2,<0.4.0)", "kivy-deps.glew (>=0.3.1,<0.4.0)", "kivy-deps.sdl2 (>=0.4.5,<0.5.0)", "pillow", "pygments", "pypiwin32"]
-dev = ["flake8", "funcparserlib (==1.0.0a0)", "kivy-deps.glew-dev (>=0.3.1,<0.4.0)", "kivy-deps.gstreamer-dev (>=0.3.3,<0.4.0)", "kivy-deps.sdl2-dev (>=0.4.5,<0.5.0)", "pre-commit", "pyinstaller", "pytest (>=3.6)", "pytest-asyncio (!=0.11.0)", "pytest-benchmark", "pytest-cov", "pytest-timeout", "sphinx", "sphinxcontrib-actdiag", "sphinxcontrib-blockdiag", "sphinxcontrib-nwdiag", "sphinxcontrib-seqdiag"]
-full = ["docutils", "ffpyplayer", "kivy-deps.angle (>=0.3.2,<0.4.0)", "kivy-deps.glew (>=0.3.1,<0.4.0)", "kivy-deps.gstreamer (>=0.3.3,<0.4.0)", "kivy-deps.sdl2 (>=0.4.5,<0.5.0)", "pillow", "pygments", "pypiwin32"]
-glew = ["kivy-deps.glew (>=0.3.1,<0.4.0)"]
-gstreamer = ["kivy-deps.gstreamer (>=0.3.3,<0.4.0)"]
-media = ["ffpyplayer", "kivy-deps.gstreamer (>=0.3.3,<0.4.0)"]
-sdl2 = ["kivy-deps.sdl2 (>=0.4.5,<0.5.0)"]
-tuio = ["oscpy"]
 
 [[package]]
 name = "kivy-garden"
@@ -547,4 +464,4 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "884533c79436ab9b30bcf470375ad7da86232fa49abbfe6e91fc21a1a3bb8ae5"
+content-hash = "5e6daf11a7ad835f98ba75839579fa748c12a8b232a24a3cdf4e2ab0963a4b8c"
