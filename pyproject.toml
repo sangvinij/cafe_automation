@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "client"
+name = "cafe"
 version = "0.1.0"
 description = ""
 authors = ["Artyom_Vorozhbyanov <artyom.vorozhbyanov@gmail.com>"]
@@ -9,6 +9,8 @@ readme = "README.md"
 python = "^3.10"
 kivy = "^2.1.0"
 kivymd = "^1.1.1"
+django = "^4.1.7"
+djangorestframework = "^3.14.0"
 
 
 [build-system]
