@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "cafe-automation"
+name = "cafe"
 version = "0.1.0"
 description = ""
 authors = ["Artyom_Vorozhbyanov <artyom.vorozhbyanov@gmail.com>"]
