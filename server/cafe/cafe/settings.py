@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'management.apps.CafeConfig',
     'ordering.apps.OrderingConfig',
+    'djoser',
     'rest_framework',
 ]
 
@@ -124,3 +125,15 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DJOSER = {
+    'USER_CREATE_PASSWORD_RETYPE': False,
+    'SEND_ACTIVATION_EMAIL': False,
+    'SET_PASSWORD_RETYPE': False,
+    'PASSWORD_RESET_CONFIRM_RETYPE': True,
+    'TOKEN_MODEL': None,
+    # 'ACTIVATION_URL': 'auth/verify/{uid}/{token}/',
+}
+
+AUTH_USER_MODEL = 'ordering.User'
+AUTHENTICATION_BACKENDS = ('ordering.backends.AuthBackend',)
