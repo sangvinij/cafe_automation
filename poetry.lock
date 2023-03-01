@@ -979,6 +979,23 @@ files = [
 ]
 
 [[package]]
+name = "twilio"
+version = "7.16.4"
+description = "Twilio API client and TwiML generator"
+category = "main"
+optional = false
+python-versions = ">=3.6.0"
+files = [
+    {file = "twilio-7.16.4-py2.py3-none-any.whl", hash = "sha256:7dead87cf3b92fae5db07ce553b571b315a1bfff2cc6a13bdf5bdfc4675409e5"},
+    {file = "twilio-7.16.4.tar.gz", hash = "sha256:594b2b594d2181e6f765e8af37f1d28277fa54b0f651ca7e5c0f54aa45797fd3"},
+]
+
+[package.dependencies]
+PyJWT = ">=2.0.0,<3.0.0"
+pytz = "*"
+requests = ">=2.0.0"
+
+[[package]]
 name = "tzdata"
 version = "2022.7"
 description = "Provider of IANA time zone data"
@@ -1022,4 +1039,4 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "dbe5fa1499f667c3f271769bb3b278e7bb78037695389403873eb66187ffd233"
+content-hash = "a88573110bc33b9a157a62512a0cd62fbc24e4a3956614087cfbc9a183b7637e"

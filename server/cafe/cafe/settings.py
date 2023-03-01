@@ -126,6 +126,10 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+SIMPLE_JWT = {
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}
+
 DJOSER = {
     'USER_CREATE_PASSWORD_RETYPE': False,
     'SEND_ACTIVATION_EMAIL': False,
@@ -137,3 +141,5 @@ DJOSER = {
 
 AUTH_USER_MODEL = 'ordering.User'
 AUTHENTICATION_BACKENDS = ('ordering.backends.AuthBackend',)
+# ACCOUNT_SID = 'ACea28eec7507ee92796a18677d7b33af7'
+# AUTH_TOKEN = '36edd1d9c97da3ef62f10a52d459a3cc'

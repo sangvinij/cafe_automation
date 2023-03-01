@@ -12,6 +12,7 @@ kivymd = "^1.1.1"
 django = "^4.1.7"
 djangorestframework = "^3.14.0"
 djoser = "^2.1.0"
+twilio = "^7.16.4"
 
 
 [build-system]
