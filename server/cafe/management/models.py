@@ -7,7 +7,6 @@ class Menu(models.Model):
     image = models.ImageField('image')
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
 
-
     def __str__(self):
         return self.title
 
@@ -26,3 +25,19 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
+
+
+class CafeAddresses(models.Model):
+    cafe_address = models.CharField('address', max_length=255, unique=True)
+
+    class Meta:
+        verbose_name = 'Адрес'
+        verbose_name_plural = 'Адреса'
+
+
+class SocialMediaLinks(models.Model):
+    social_media_name = models.CharField(max_length=255)
+    social_media_link = models.URLField()
+
+    class Meta:
+        unique_together = ('social_media_name', 'social_media_link')

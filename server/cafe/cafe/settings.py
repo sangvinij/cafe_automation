@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = 'django-insecure-dke44b*j_o8%@#o$76+e1r=+sk5s@9(l*+t27l(5veob1#yqf9
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -39,8 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'management.apps.CafeConfig',
     'ordering.apps.OrderingConfig',
-    'djoser',
     'rest_framework',
+    'rest_framework.authtoken',
+    'djoser',
 ]
 
 MIDDLEWARE = [
@@ -73,7 +72,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cafe.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
@@ -83,7 +81,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -103,7 +100,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -115,7 +111,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
@@ -126,8 +121,23 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-SIMPLE_JWT = {
-    'AUTH_HEADER_TYPES': ('Bearer',),
+AUTH_USER_MODEL = 'ordering.User'
+
+AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend', )
+
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.ScryptPasswordHasher',
+]
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
 }
 
 DJOSER = {
@@ -135,11 +145,9 @@ DJOSER = {
     'SEND_ACTIVATION_EMAIL': False,
     'SET_PASSWORD_RETYPE': False,
     'PASSWORD_RESET_CONFIRM_RETYPE': True,
-    'TOKEN_MODEL': None,
+    'SERIALIZERS': {
+        'current_user': 'ordering.serializers.CurrentUserSerializer'
+    },
+    'TOKEN_MODEL': 'rest_framework.authtoken.models.Token',
     # 'ACTIVATION_URL': 'auth/verify/{uid}/{token}/',
 }
-
-AUTH_USER_MODEL = 'ordering.User'
-AUTHENTICATION_BACKENDS = ('ordering.backends.AuthBackend',)
-# ACCOUNT_SID = 'ACea28eec7507ee92796a18677d7b33af7'
-# AUTH_TOKEN = '36edd1d9c97da3ef62f10a52d459a3cc'
