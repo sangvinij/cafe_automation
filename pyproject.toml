@@ -12,8 +12,13 @@ kivymd = "^1.1.1"
 django = "^4.1.7"
 djangorestframework = "^3.14.0"
 djoser = "^2.1.0"
-twilio = "^7.16.4"
 drf-nested-routers = "^0.93.4"
+pillow = "^9.4.0"
+mapview = "^1.0.6"
+kivy-garden = "^0.1.5"
+geopy = "^2.3.0"
+flake8 = "^6.0.0"
+flake8-import-order = "^0.18.2"
 
 
 [build-system]

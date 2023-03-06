@@ -1,16 +1,16 @@
-from django.contrib.auth import get_user_model, get_user
-from djoser.serializers import UserSerializer
+from djoser.serializers import UserCreateSerializer
+
+from management.models import Menu
 
 from rest_framework import serializers
 
-from .models import Cart, CartItems, User
-from management.models import Menu
+from .models import Cart, CartItems, Order, OrderStatus, PaymentType, User
 
 
-class CurrentUserSerializer(UserSerializer):
+class CreateUserSerializer(UserCreateSerializer):
     class Meta:
         model = User
-        fields = ('phone_number', 'first_name', 'last_name', 'email')
+        fields = ('phone_number', 'password', 'first_name', 'last_name', 'email')
 
 
 class CartUserSerializer(serializers.ModelSerializer):
@@ -84,10 +84,26 @@ class CartSerializer(serializers.ModelSerializer):
         fields = ['id', 'carts', 'total_price']
 
     @staticmethod
-    def price_of_whole_cart(cart: Cart):
-        items = cart.carts.all()
-        total_price = round(sum([cart_item.amount * cart_item.item.price for cart_item in items]), 2)
+    def price_of_whole_cart():
+        items = Cart.carts.all()
+        total_price = round(sum([cart_item.amount * cart_item.item.price
+                                 for cart_item in items]), 2)
         return total_price
 
 
+class PaymentTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PaymentType
+        fields = ['payment_type']
 
+
+class OrderStatusSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OrderStatus
+        fields = ['status_name']
+
+
+class OrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = '__all__'

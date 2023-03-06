@@ -1,7 +1,14 @@
 #:kivy 2.1.0
+#:include cafe/login.kv
 
 #:import md_icons kivymd.icon_definitions.md_icons
 #:import fonts kivymd.font_definitions.fonts
+#:import MapView kivy.garden.mapview.MapView
+
+<AddressMapView>:
+    lat: 53.9
+    lon: 27.56
+    zoom: 12
 
 <DrawerClickableItem@MDNavigationDrawerItem>
     focus_color: "#e7e4c0"
@@ -18,13 +25,73 @@
     selected_color: "#4a4939"
     _no_ripple_effect: True
 
+<ContentNavigationDrawer>
+    MDNavigationDrawerMenu:
+        size_hint_x: 1.6
+        MDNavigationDrawerHeader:
+            title: "Cafe_name"
+            title_font_style: 'H5'
+            text: "lorem ipsum"
+            source: "cafe/data/images/logo.jpg"
+            spacing: "4dp"
+            padding: "12dp", 0, 0, "2dp"
+        DrawerClickableItem:
+            icon: "account"
+            text_right_color: "#4a4939"
+            text: "Профиль"
+        DrawerClickableItem:
+            icon: "information-outline"
+            text: "О нас"
+        MDNavigationDrawerDivider:
+        DrawerClickableItem:
+            id: vk
+            icon: "vimeo"
+            text: "Мы ВКонтакте"
+            on_release: app.links(1)
+        DrawerClickableItem:
+            id: inst
+            icon: "instagram"
+            text: "Мы в Instagram"
+            on_release: app.links(2)
+        MDNavigationDrawerDivider:
+        DrawerClickableItem:
+            id: logout
+            text: 'Выйти'
+            on_release:
+                app.log_out()
+
+<SonBox>
+    orientation: 'horizontal'
+    padding: 12
+    size_hint_y: .25
+    MDLabel:
+        text: 'Бургеры'
+        size_hint_y: .25
+        font_size: 20
+        font_style: 'H6'
+        padding_bottom: '10dp'
+        halign: 'left'
+    MDTextButton:
+        text: 'Ещё'
+        size_hint_y: .25
+        font_size: 20
+        padding_bottom: '10dp'
+        halign: 'right'
+
+<Cards>
+    cols: 2
+    size_hint_y: 2
+    padding: 10
+    id: cards
+
+<Tab>
 
 
-MDScreen:
-
+<MainScreen>:
     MDBottomNavigation:
         panel_color: "#eeeaea"
         text_color_active: "red"
+        id: bottom_navigation
 
         MDBottomNavigationItem:
             name: 'screen 1'
@@ -52,307 +119,9 @@ MDScreen:
                         MDScrollView:
                             MDBoxLayout:
                                 orientation: 'vertical'
-                                padding: 12
-                                size_hint_y: 2.4
-
-                                MDBoxLayout:
-                                    orientation: 'horizontal'
-                                    padding: 12
-                                    size_hint_y: .25
-                                    MDLabel:
-                                        text: 'Бургеры'
-                                        size_hint_y: .25
-                                        font_size: 20
-                                        font_style: 'H6'
-                                        padding_bottom: '10dp'
-                                        halign: 'left'
-
-                                    MDTextButton:
-                                        text: 'Ещё'
-                                        size_hint_y: .25
-                                        font_size: 20
-                                        padding_bottom: '10dp'
-                                        halign: 'right'
-
-                                MDGridLayout:
-
-                                    cols: 2
-                                    size_hint_y: 2
-                                    padding: 10
-                                    MDCard:
-
-                                        MDBoxLayout:
-                                            orientation: 'vertical'
-                                            padding: '5dp'
-                                            FitImage:
-                                                source: 'cafe/data/images/menu/hamburger.jpg'
-
-                                            MDLabel:
-                                                text: 'Гамбургер'
-                                                font_size: 10
-                                                size_hint_y: .2
-                                                font_style: 'H6'
-                                            MDLabel:
-                                                text: '2.4 BYN'
-                                                font_size: 12
-                                                size_hint_y: .2
-
-                                            MDRectangleFlatButton:
-                                                text: "В корзину"
-                                                md_bg_color: "red"
-                                                text_color: 'white'
-
-                                    MDCard:
-
-                                        MDBoxLayout:
-                                            orientation: 'vertical'
-                                            padding: '5dp'
-                                            FitImage:
-                                                source: 'cafe/data/images/menu/cheeseburger.jpg'
-                                            MDLabel:
-                                                text: 'Чизбургер'
-                                                font_size: 10
-                                                size_hint_y: .2
-                                                font_style: 'H6'
-                                            MDLabel:
-                                                text: '2.4 BYN'
-                                                font_size: 12
-                                                size_hint_y: .2
-
-                                            MDRectangleFlatButton:
-                                                text: "В корзину"
-                                                md_bg_color: "red"
-                                                text_color: 'white'
-
-                                MDBoxLayout:
-                                    orientation: 'horizontal'
-                                    padding: 12
-                                    size_hint_y: .25
-                                    MDLabel:
-                                        text: 'Картофель'
-                                        size_hint_y: .25
-                                        font_size: 20
-                                        font_style: 'H6'
-                                        halign: 'left'
-                                    MDTextButton:
-                                        text: 'Ещё'
-                                        size_hint_y: .25
-                                        font_size: 20
-                                        padding_bottom: '10dp'
-                                        halign: 'right'
-
-
-                                MDGridLayout:
-
-                                    cols: 2
-                                    size_hint_y: 2
-                                    padding: 10
-                                    MDCard:
-
-                                        MDBoxLayout:
-                                            orientation: 'vertical'
-                                            padding: '5dp'
-                                            FitImage:
-                                                source: 'cafe/data/images/menu/french_fries.jpg'
-                                            MDLabel:
-                                                text: 'Картофель1'
-                                                font_size: 10
-                                                size_hint_y: .2
-                                                font_style: 'H6'
-                                            MDLabel:
-                                                text: '2.4 BYN'
-                                                font_size: 12
-                                                size_hint_y: .2
-
-                                            MDRectangleFlatButton:
-                                                text: "В корзину"
-                                                md_bg_color: "red"
-                                                text_color: 'white'
-
-                                    MDCard:
-
-                                        MDBoxLayout:
-                                            orientation: 'vertical'
-                                            padding: '5dp'
-                                            FitImage:
-                                                source: 'cafe/data/images/menu/vilpot.jpg'
-                                            MDLabel:
-                                                text: 'Картофель2'
-                                                font_size: 10
-                                                size_hint_y: .2
-                                                font_style: 'H6'
-                                            MDLabel:
-                                                text: '2.4 BYN'
-                                                font_size: 12
-                                                size_hint_y: .2
-
-                                            MDRectangleFlatButton:
-                                                text: "В корзину"
-                                                md_bg_color: "red"
-                                                text_color: 'white'
-
-                                MDBoxLayout:
-                                    orientation: 'horizontal'
-                                    padding: 12
-                                    size_hint_y: .25
-                                    MDLabel:
-                                        text: 'Десерты'
-                                        size_hint_y: .25
-                                        font_size: 20
-                                        font_style: 'H6'
-                                        halign: 'left'
-                                    MDTextButton:
-                                        text: 'Ещё'
-                                        size_hint_y: .25
-                                        font_size: 20
-                                        padding_bottom: '10dp'
-                                        halign: 'right'
-
-
-                                MDGridLayout:
-
-                                    cols: 2
-                                    size_hint_y: 2
-                                    padding: 10
-                                    MDCard:
-
-                                        MDBoxLayout:
-                                            orientation: 'vertical'
-                                            padding: '5dp'
-                                            FitImage:
-                                                source: 'cafe/data/images/menu/icecream_chock.jpg'
-                                            MDLabel:
-                                                text: 'Мороженое шоколад'
-                                                font_size: 12
-                                                size_hint_y: .4
-                                                font_style: 'H6'
-                                            MDLabel:
-                                                text: '2.4 BYN'
-                                                font_size: 12
-                                                size_hint_y: .2
-
-                                            MDRectangleFlatButton:
-                                                text: "В корзину"
-                                                md_bg_color: "red"
-                                                text_color: 'white'
-
-                                    MDCard:
-
-                                        MDBoxLayout:
-                                            orientation: 'vertical'
-                                            padding: '5dp'
-                                            FitImage:
-                                                source: 'cafe/data/images/menu/icecream_car.jpg'
-                                            MDLabel:
-                                                text: 'Мороженое карамель'
-                                                font_size: 12
-                                                size_hint_y: .4
-                                                font_style: 'H6'
-
-                                            MDLabel:
-                                                text: '2.4 BYN'
-                                                font_size: 12
-                                                size_hint_y: .2
-
-                                            MDRectangleFlatButton:
-                                                text: "В корзину"
-                                                md_bg_color: "red"
-                                                text_color: 'white'
-
-                                MDBoxLayout:
-                                    orientation: 'horizontal'
-                                    padding: 12
-                                    size_hint_y: .25
-
-                                    MDLabel:
-                                        text: 'Холодные напитки'
-                                        size_hint_y: .25
-                                        font_size: 20
-                                        font_style: 'H6'
-                                        halign: 'left'
-
-                                    MDTextButton:
-                                        text: 'Ещё'
-                                        size_hint_y: .25
-                                        font_size: 20
-                                        padding_bottom: '10dp'
-                                        halign: 'right'
-
-                                MDGridLayout:
-
-                                    cols: 2
-                                    size_hint_y: 2
-                                    padding: 10
-                                    MDCard:
-
-                                        MDBoxLayout:
-                                            orientation: 'vertical'
-                                            padding: '5dp'
-                                            FitImage:
-                                                source: 'cafe/data/images/menu/fanta.jpg'
-                                            MDLabel:
-                                                text: 'Фанта'
-                                                font_size: 10
-                                                size_hint_y: .2
-                                                font_style: 'H6'
-
-                                            MDLabel:
-                                                text: '2.4 BYN'
-                                                font_size: 12
-                                                size_hint_y: .2
-
-                                            MDRectangleFlatButton:
-                                                text: "В корзину"
-                                                md_bg_color: "red"
-                                                text_color: 'white'
-
-                                    MDCard:
-
-                                        MDBoxLayout:
-                                            orientation: 'vertical'
-                                            padding: '5dp'
-                                            FitImage:
-                                                source: 'cafe/data/images/menu/cola.jpg'
-                                            MDLabel:
-                                                text: 'Кола'
-                                                font_size: 10
-                                                size_hint_y: .2
-                                                font_style: 'H6'
-
-                                            MDLabel:
-                                                text: '2.4 BYN'
-                                                font_size: 12
-                                                size_hint_y: .2
-
-                                            MDRectangleFlatButton:
-                                                text: "В корзину"
-                                                md_bg_color: "red"
-                                                text_color: 'white'
-
-                    Tab:
-                        id: tab2
-                        name: 'tab1'
-                        title: f"[size=18][font={fonts[-1]['fn_regular']}][/size][/font] Бургеры"
-
-                    Tab:
-                        id: tab3
-                        name: 'tab1'
-                        title: f"[size=18][font={fonts[-1]['fn_regular']}][/size][/font] Картофель"
-
-                    Tab:
-                        id: tab4
-                        name: 'tab1'
-                        title: f"[size=18][font={fonts[-1]['fn_regular']}][/size][/font] Десерты"
-
-                    Tab:
-                        id: tab5
-                        name: 'tab5'
-                        title: f"[size=18][font={fonts[-1]['fn_regular']}][/size][/font] Холодные напитки"
-
-                    Tab:
-                        id: tab6
-                        name: 'tab5'
-                        title: f"[size=18][font={fonts[-1]['fn_regular']}][/size][/font] Горячие напитки"
+                                padding: 5
+                                size_hint_y: 3.6
+                                id: main_box
 
 
         MDBottomNavigationItem:
@@ -368,10 +137,7 @@ MDScreen:
             name: 'screen 3'
             text: 'Адреса'
             icon: 'map-search'
-
-            MDLabel:
-                text: 'Адреса'
-                halign: 'center'
+            id: address
 
         MDBottomNavigationItem:
             name: 'screen 4'
@@ -382,58 +148,19 @@ MDScreen:
                 text: 'Корзина'
                 halign: 'center'
 
+    MDTopAppBar:
+        title: "Cafe_name"
+        elevation: 1
+        pos_hint: {"top": 1}
+        md_bg_color: "#e7e4c0"
+        specific_text_color: "white"
+        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+
     MDNavigationLayout:
-
-        MDScreenManager:
-
-            MDScreen:
-
-                MDTopAppBar:
-                    title: "Cafe_name"
-                    elevation: 1
-                    pos_hint: {"top": 1}
-                    md_bg_color: "#e7e4c0"
-                    specific_text_color: "white"
-                    left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
-
 
         MDNavigationDrawer:
             id: nav_drawer
             radius: (0, 16, 16, 0)
 
-            MDNavigationDrawerMenu:
-
-                MDNavigationDrawerHeader:
-                    title: "Cafe_name"
-                    text: "lorem ipsum"
-                    source: "cafe/data/images/logo.jpg"
-                    spacing: "4dp"
-                    padding: "12dp", 0, 0, "2dp"
-
-
-                DrawerClickableItem:
-                    icon: "account"
-                    text_right_color: "#4a4939"
-                    text: "Профиль"
-
-                DrawerClickableItem:
-                    icon: "map-search"
-                    text: "Адреса"
-
-                DrawerClickableItem:
-                    icon: "information-outline"
-                    text: "О нас"
-
-                MDNavigationDrawerDivider:
-
-                DrawerClickableItem:
-                    id: vk
-                    icon: "vimeo"
-                    text: "Мы ВКонтакте"
-                    on_release: app.links(1)
-
-                DrawerClickableItem:
-                    id: inst
-                    icon: "instagram"
-                    text: "Мы в Instagram"
-                    on_release: app.links(2)
+            ContentNavigationDrawer:
+                nav_drawer: nav_drawer

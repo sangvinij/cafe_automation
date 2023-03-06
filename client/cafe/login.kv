@@ -1,4 +1,5 @@
 #:kivy 2.1.0
+#:import md_icons kivymd.icon_definitions.md_icons
 
 <Password>
     orientation: 'vertical'
@@ -20,10 +21,10 @@
         theme_text_color: "Hint"
         on_release:
             self.icon = "eye" if self.icon == "eye-off" else "eye-off"
-            password.password = False if password.password is True else True    
-            
+            password.password = False if password.password is True else True
 
-MDScreen:
+
+<LoginScreen>:
     MDBoxLayout:
         size_hint: None, None
         size: 300, 500
@@ -33,8 +34,8 @@ MDScreen:
         spacing: '25dp'
         orientation: 'vertical'
 
-        Image:       
-            source:"data/images/login.png"
+        Image:
+            source:"cafe/data/images/login.png"
             size_hint_y: None
             height:"100dp"
 
@@ -50,13 +51,15 @@ MDScreen:
         MDTextField:
             id: user
             mode: 'round'
-            hint_text: 'Имя пользователя'
+            hint_text: 'Номер телефона'
+            required: True
+            helper_text_mode: "on_error"
             icon_right: 'account'
             size_hint_x: None
             pos_hint: {"center_x": .5}
             width: "300dp"
             padding: 10
-            
+            max_text_length: 13
 
         Password:
             id: passw
@@ -65,8 +68,7 @@ MDScreen:
             pos_hint: {"center_x": .5}
 
         MDRoundFlatButton:
-            size_hint: None,None
-            size_hint_x: 1
+            size_hint: 1, None
             height:'58dp'
             text:'Войти'
             font_size:'24dp'
@@ -79,11 +81,87 @@ MDScreen:
                 text:'Нет аккаунта?'
                 font_size:'14dp'
                 halign: 'center'
-                
+
             MDTextButton:
                 text:'Регистрация'
                 font_size:'16dp'
                 size_hint_x: 1
                 padding_y: 8
                 color: 'red'
-                on_press: app.registration()
+                on_press:  
+                    app.root.current = 'registration_screen' 
+                    app.root.transition.direction = 'left'
+
+
+<RegistrationScreen>:
+    MDBoxLayout:
+        padding: 4
+        spacing: 7
+        orientation: 'vertical'
+        pos_hint: {'center_x': .5, 'center_y': .6}
+        MDBoxLayout:
+            orientation: 'horizontal'
+            MDIconButton:
+                icon: "arrow-left"
+                pos_hint: {'center_x': .9, 'center_y': .2}
+                on_press: 
+                    app.root.current = 'login_screen' 
+                    app.root.transition.direction = 'right'
+
+            MDLabel:
+                id: registration_label
+                text: 'Регистрация'
+                font_size: '40dp'
+                pos_hint: {'center_y': .2}
+                halign: 'center'
+                size_hint_y: None
+                height: self.texture_size[1]
+                padding_y: 5
+
+        MDTextField:
+            id: phone_number
+            required: True
+            hint_text: 'Номер телефона'
+            helper_text: 'введите номер телефона в формате +375XXYYYYYYY'
+            helper_text_mode: 'on_focus'
+            size_hint_x: None
+            pos_hint: {"center_x": .5}
+            width: "300dp"
+            padding: 10
+        MDTextField:
+            id: reg_password
+            password: True
+            required: True
+            helper_text_mode: "on_error"
+            hint_text: 'Придумайте пароль'
+            size_hint_x: None
+            width: "300dp"
+            pos_hint: {"center_x": .5}
+            padding: 10
+        MDTextField:
+            id: first_name
+            hint_text: 'Введите имя(необязательно)'
+            size_hint_x: None
+            width: "300dp"
+            pos_hint: {"center_x": .5}
+        MDTextField:
+            id: last_name
+            hint_text: 'Введите фамилию(необязательно)'
+            size_hint_x: None
+            width: "300dp"
+            pos_hint: {"center_x": .5}
+        MDTextField:
+            id: email
+            validator: "email"
+            hint_text: 'Введите e-mail(необязательно)'
+            size_hint_x: None
+            width: "300dp"
+            pos_hint: {"center_x": .5}
+
+
+        MDRoundFlatButton:
+            id: register   
+            pos_hint:{'center_x': .5}
+            font_size:'24dp'
+            text:'Зарегистрироваться'
+            on_press: app.sign_up()

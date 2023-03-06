@@ -1,19 +1,26 @@
-from rest_framework import viewsets, permissions
-from .models import Menu, Category, CafeAddresses, SocialMediaLinks
-from .serializers import MenuSerializer, CategorySerializer, CafeAddressSerializer, LinksSerializer
+from rest_framework import viewsets
+
+from .models import CafeAddresses, Category, Menu, SocialMediaLinks
 from .permissions import IsAdminOrReadOnly
+from .serializers import AddMenuSerializer, CafeAddressSerializer, \
+    CategorySerializer, LinksSerializer, MenuSerializer
 
 
 class MenuViewSet(viewsets.ModelViewSet):
     queryset = Menu.objects.all()
-    serializer_class = MenuSerializer
-    permission_classes = (IsAdminOrReadOnly, )
+    permission_classes = (IsAdminOrReadOnly,)
+
+    def get_serializer_class(self):
+        if self.request.method == 'POST':
+            return AddMenuSerializer
+
+        return MenuSerializer
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    permission_classes = (IsAdminOrReadOnly, )
+    permission_classes = (IsAdminOrReadOnly,)
 
 
 class AddressViewSet(viewsets.ModelViewSet):
@@ -25,3 +32,4 @@ class AddressViewSet(viewsets.ModelViewSet):
 class LinksViewSet(viewsets.ModelViewSet):
     queryset = SocialMediaLinks.objects.all()
     serializer_class = LinksSerializer
+    permission_classes = (IsAdminOrReadOnly,)

@@ -1,14 +1,24 @@
-from django.shortcuts import render, get_object_or_404
-from rest_framework.viewsets import ModelViewSet, GenericViewSet
-from rest_framework.mixins import CreateModelMixin, RetrieveModelMixin, DestroyModelMixin
+from management.permissions import IsAdminOrReadOnly, \
+                                    IsOwner, IsOwnerOrReadOnly
 
-from .models import Cart, CartItems
-from .serializers import CartSerializer, CartItemSerializer, AddCartItemSerializer, UpdateCartItemSerializer
+from rest_framework.mixins import CreateModelMixin, \
+                        DestroyModelMixin, RetrieveModelMixin
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.viewsets import GenericViewSet, ModelViewSet
 
 
-class CartViewSet(CreateModelMixin, RetrieveModelMixin, DestroyModelMixin, GenericViewSet):
+from .models import Cart, CartItems, OrderStatus, PaymentType
+from .serializers import AddCartItemSerializer, CartItemSerializer, \
+                        CartSerializer, OrderSerializer, \
+                        OrderStatusSerializer, \
+                        PaymentTypeSerializer, UpdateCartItemSerializer
+
+
+class CartViewSet(CreateModelMixin, RetrieveModelMixin,
+                  DestroyModelMixin, GenericViewSet):
     queryset = Cart.objects.all()
     serializer_class = CartSerializer
+    permission_classes = (IsAuthenticated, )
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -16,6 +26,7 @@ class CartViewSet(CreateModelMixin, RetrieveModelMixin, DestroyModelMixin, Gener
 
 class CartItemViewSet(ModelViewSet):
     http_method_names = ['get', 'post', 'patch', 'delete']
+    permission_classes = (IsOwnerOrReadOnly, )
 
     def get_queryset(self):
         return CartItems.objects.filter(cart_id=self.kwargs['cart_pk'])
@@ -32,3 +43,20 @@ class CartItemViewSet(ModelViewSet):
     def get_serializer_context(self):
         return {'cart_id': self.kwargs['cart_pk']}
 
+
+class OrderViewSet(ModelViewSet):
+    queryset = PaymentType.objects.all()
+    serializer_class = OrderSerializer
+    permission_classes = (IsAdminOrReadOnly, IsOwner)
+
+
+class PaymentTypeViewSet(ModelViewSet):
+    queryset = PaymentType.objects.all()
+    serializer_class = PaymentTypeSerializer
+    permission_classes = (IsAdminOrReadOnly, )
+
+
+class OrderStatusViewSet(ModelViewSet):
+    queryset = OrderStatus.objects.all()
+    serializer_class = OrderStatusSerializer
+    permission_classes = (IsAdminOrReadOnly, )

@@ -1,10 +1,9 @@
 from django import forms
 from django.contrib import admin
-from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
-from django.core.exceptions import ValidationError
-from .models import User, Cart, CartItems
+
+from .models import Cart, CartItems, Order, OrderStatus, PaymentType, User
 
 
 class UserCreationForm(forms.ModelForm):
@@ -57,3 +56,6 @@ class UserAdmin(BaseUserAdmin):
 admin.site.register(User, UserAdmin)
 admin.site.register(Cart)
 admin.site.register(CartItems)
+admin.site.register(Order)
+admin.site.register(PaymentType)
+admin.site.register(OrderStatus)
