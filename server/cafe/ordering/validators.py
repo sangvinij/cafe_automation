@@ -10,7 +10,6 @@ class PassValidator(object):
     def validate(self, password, user=None):
         if not self.password_regex.fullmatch(password):
             raise ValidationError(
-                _('TThe password must contain at least one letter, '
-                  'one digit and must be more then 5 characters'),
+                _('Минимум 5 символов, 1 латинская буква и 1 цифра'),
                 code='wrong password',
             )

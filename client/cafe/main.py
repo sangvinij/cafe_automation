@@ -113,9 +113,6 @@ class CafeApp(MDApp):
         self.screen_manager.add_widget(self.registration_screen)
         self.screen_manager.add_widget(self.main_screen)
         self.screen_manager.current = 'main_screen'
-        # user = get_user(token=self.token)
-        # if user:
-        #     self.screen_manager.current = 'main_screen'
         self.screen_manager.current = 'login_screen'
         return self.screen_manager
 
@@ -156,14 +153,14 @@ class CafeApp(MDApp):
         first_name = self.registration_screen.ids.first_name
         last_name = self.registration_screen.ids.last_name
         email = self.registration_screen.ids.email
-        phone_validator = r'^(\+375)(29|25|44|33)(\d{7})$'
-        password_validator = re.compile('^(?=.*?[a-z])(?=.*?[0-9]).{5,}$')
-        phone_validation = re.fullmatch(phone_validator, self.registration_screen.ids.phone_number.text)
-        if not password_validator.fullmatch(password.text) or not phone_validation:
-            phone_number.error = True
-            password.error = True
-            phone_number.helper_text = 'Введите номер телефона в указанном формате'
-            password.helper_text = 'минимум 5 символов, 1 латинская буква и 1 цифра'
+        # phone_validator = r'^(\+375)(29|25|44|33)(\d{7})$'
+        # password_validator = re.compile('^(?=.*?[a-z])(?=.*?[0-9]).{5,}$')
+        # phone_validation = re.fullmatch(phone_validator, self.registration_screen.ids.phone_number.text)
+        # if not password_validator.fullmatch(password.text) or not phone_validation:
+        #     phone_number.error = True
+        #     password.error = True
+        #     phone_number.helper_text = 'Введите номер телефона в указанном формате'
+        #     password.helper_text = 'минимум 5 символов, 1 латинская буква и 1 цифра'
 
         registration = register(phone_number.text,
                                 password.text,
@@ -171,12 +168,17 @@ class CafeApp(MDApp):
                                 last_name=last_name.text,
                                 email=email.text)
         data = registration.json()
-        if registration.status_code == 400 and data['phone_number'] \
-                == ['пользователь с таким phone_number уже существует.']:
-            phone_number.helper_text = str(data['phone_number'])
 
         if registration:
             self.screen_manager.current = 'login_screen'
+
+        else:
+            if 'phone_number' in data:
+                phone_number.error = True
+                phone_number.helper_text = data['phone_number'][0]
+            elif 'password' in data:
+                password.error = True
+                password.helper_text = data['password'][0]
 
     def log_out(self):
         try:

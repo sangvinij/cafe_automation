@@ -3,7 +3,7 @@ from rest_framework import viewsets
 from .models import CafeAddresses, Category, Menu, SocialMediaLinks
 from .permissions import IsAdminOrReadOnly
 from .serializers import AddMenuSerializer, CafeAddressSerializer, \
-    CategorySerializer, LinksSerializer, MenuSerializer
+                         CategorySerializer, LinksSerializer, MenuSerializer
 
 
 class MenuViewSet(viewsets.ModelViewSet):
@@ -11,10 +11,10 @@ class MenuViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAdminOrReadOnly,)
 
     def get_serializer_class(self):
-        if self.request.method == 'POST':
-            return AddMenuSerializer
+        if self.request.method == 'GET':
+            return MenuSerializer
 
-        return MenuSerializer
+        return AddMenuSerializer
 
 
 class CategoryViewSet(viewsets.ModelViewSet):

@@ -84,8 +84,8 @@ class CartSerializer(serializers.ModelSerializer):
         fields = ['id', 'carts', 'total_price']
 
     @staticmethod
-    def price_of_whole_cart():
-        items = Cart.carts.all()
+    def price_of_whole_cart(cart: Cart):
+        items = cart.carts.all()
         total_price = round(sum([cart_item.amount * cart_item.item.price
                                  for cart_item in items]), 2)
         return total_price
