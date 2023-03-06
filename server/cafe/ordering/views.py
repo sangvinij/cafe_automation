@@ -1,5 +1,4 @@
-from management.permissions import IsAdminOrReadOnly, \
-    IsOwner, IsOwnerOrReadOnly
+from management.permissions import IsAdminOrReadOnly
 
 from rest_framework.mixins import CreateModelMixin, \
     DestroyModelMixin, RetrieveModelMixin
