@@ -1,0 +1,166 @@
+#:kivy 2.1.0
+#:include cafe/login.kv
+
+#:import md_icons kivymd.icon_definitions.md_icons
+#:import fonts kivymd.font_definitions.fonts
+#:import MapView kivy_garden.mapview.MapView
+
+<AddressMapView>:
+    lat: 53.9
+    lon: 27.56
+    zoom: 12
+
+<DrawerClickableItem@MDNavigationDrawerItem>
+    focus_color: "#e7e4c0"
+    text_color: "#4a4939"
+    icon_color: "#4a4939"
+    ripple_color: "#c5bdd2"
+    selected_color: "#0c6c4d"
+
+
+<DrawerLabelItem@MDNavigationDrawerItem>
+    text_color: "#4a4939"
+    icon_color: "#4a4939"
+    focus_behavior: False
+    selected_color: "#4a4939"
+    _no_ripple_effect: True
+
+<ContentNavigationDrawer>
+    MDNavigationDrawerMenu:
+        size_hint_x: 1.6
+        MDNavigationDrawerHeader:
+            title: "Cafe_name"
+            title_font_style: 'H5'
+            text: "lorem ipsum"
+            source: "cafe/data/images/logo.jpg"
+            spacing: "4dp"
+            padding: "12dp", 0, 0, "2dp"
+        DrawerClickableItem:
+            icon: "account"
+            text_right_color: "#4a4939"
+            text: "Профиль"
+        DrawerClickableItem:
+            icon: "information-outline"
+            text: "О нас"
+        MDNavigationDrawerDivider:
+        DrawerClickableItem:
+            id: vk
+            icon: "vimeo"
+            text: "Мы ВКонтакте"
+            on_release: app.links(1)
+        DrawerClickableItem:
+            id: inst
+            icon: "instagram"
+            text: "Мы в Instagram"
+            on_release: app.links(2)
+        MDNavigationDrawerDivider:
+        DrawerClickableItem:
+            id: logout
+            text: 'Выйти'
+            on_release:
+                app.log_out()
+
+<SonBox>
+    orientation: 'horizontal'
+    padding: 12
+    size_hint_y: .25
+    MDLabel:
+        text: 'Бургеры'
+        size_hint_y: .25
+        font_size: 20
+        font_style: 'H6'
+        padding_bottom: '10dp'
+        halign: 'left'
+    MDTextButton:
+        text: 'Ещё'
+        size_hint_y: .25
+        font_size: 20
+        padding_bottom: '10dp'
+        halign: 'right'
+
+<Cards>
+    cols: 2
+    size_hint_y: 2
+    padding: 10
+    id: cards
+
+<Tab>
+
+
+<MainScreen>:
+    MDBottomNavigation:
+        panel_color: "#eeeaea"
+        text_color_active: "red"
+        id: bottom_navigation
+
+        MDBottomNavigationItem:
+            name: 'screen 1'
+            text: 'Меню'
+            icon: 'food'
+
+            MDBoxLayout:
+                orientation: 'vertical'
+
+                MDTopAppBar:
+
+                MDTabs:
+                    id: tabs
+                    on_tab_switch: app.on_tab_switch(*args)
+                    height: '48dp'
+                    tab_indicator_anim: False
+                    tab_hint_x: 2
+                    pos_hint: {"center_x": .5, "center_y": .5}
+
+                    Tab:
+                        id: tab1
+                        name: 'tab1'
+                        title: f"[size=18][font={fonts[-1]['fn_regular']}][/size][/font] Все"
+
+                        MDScrollView:
+                            MDBoxLayout:
+                                orientation: 'vertical'
+                                padding: 5
+                                size_hint_y: 3.6
+                                id: main_box
+
+
+        MDBottomNavigationItem:
+            name: 'screen 2'
+            text: 'Акции'
+            icon: 'sale'
+
+            MDLabel:
+                text: 'Акции'
+                halign: 'center'
+
+        MDBottomNavigationItem:
+            name: 'screen 3'
+            text: 'Адреса'
+            icon: 'map-search'
+            id: address
+
+        MDBottomNavigationItem:
+            name: 'screen 4'
+            text: 'Корзина'
+            icon: 'cart-outline'
+
+            MDLabel:
+                text: 'Корзина'
+                halign: 'center'
+
+    MDTopAppBar:
+        title: "Cafe_name"
+        elevation: 1
+        pos_hint: {"top": 1}
+        md_bg_color: "#e7e4c0"
+        specific_text_color: "white"
+        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+
+    MDNavigationLayout:
+
+        MDNavigationDrawer:
+            id: nav_drawer
+            radius: (0, 16, 16, 0)
+
+            ContentNavigationDrawer:
+                nav_drawer: nav_drawer

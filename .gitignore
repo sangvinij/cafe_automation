@@ -131,3 +131,5 @@ dmypy.json
 
 # Idea
 .idea
+/client/cache/
+/server/cafe/media/
