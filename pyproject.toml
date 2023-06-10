@@ -19,6 +19,7 @@ kivy-garden = "^0.1.5"
 geopy = "^2.3.0"
 flake8 = "^6.0.0"
 flake8-import-order = "^0.18.2"
+kivy-deps-sdl2 = "^0.6.0"
 
 
 [build-system]
