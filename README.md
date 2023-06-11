@@ -23,7 +23,7 @@ After completing these steps, the project will be running and available at `http
 
 To create a superuser, execute the following command:
 
-`docker-compose exec webapp python project/manage.py createsuperuser`
+`docker-compose exec webapp python cafe/manage.py createsuperuser`
 
 Follow the on-screen instructions to set credentials for the superuser.
 
