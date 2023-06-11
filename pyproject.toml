@@ -6,20 +6,18 @@ authors = ["Artyom_Vorozhbyanov <artyom.vorozhbyanov@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10"
-kivy = "^2.1.0"
-kivymd = "^1.1.1"
+python = "^3.11"
 django = "^4.1.7"
 djangorestframework = "^3.14.0"
 djoser = "^2.1.0"
 drf-nested-routers = "^0.93.4"
 pillow = "^9.4.0"
-mapview = "^1.0.6"
-kivy-garden = "^0.1.5"
-geopy = "^2.3.0"
 flake8 = "^6.0.0"
 flake8-import-order = "^0.18.2"
-kivy-deps-sdl2 = "^0.6.0"
+python-dotenv = "^1.0.0"
+dj-database-url = "^2.0.0"
+psycopg2-binary = "^2.9.6"
+drf-spectacular = "^0.26.2"
 
 
 [build-system]
